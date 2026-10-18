@@ -7,6 +7,8 @@ public class HandLock : MonoBehaviour
     [Header("Hand Positions")]
     public Transform left_hand;
     public Transform right_hand;
+    public Transform left_hand_visual;
+    public Transform right_hand_visual;
 
     [Header("Physics")]
     [Tooltip("Mass in Kg")]
@@ -47,10 +49,20 @@ public class HandLock : MonoBehaviour
     public InputActionReference left_grip_action;
     public InputActionReference right_grip_action;
 
+    [Header("Grip Surface Settings")]
+    [Tooltip("Layers that can be grabbed")]
+    public LayerMask grip_mask = ~0;
+    [Tooltip("Layers to exclude")]
+    public LayerMask grip_exclude_mask = 0;
+    [Tooltip("How far a hand can be from a surface but still register a grab")]
+    [Min(0F)]
+    public float grip_reach = 0.08F;
+
     private const float ground_stick_speed = 2F; // keeps player on ground
     private const float epsilon = 0.001F;
 
     private CharacterController controller;
+    private readonly Collider[] grip_hits = new Collider[8];
 
     private Vector3 velocity;
     private Vector3 left_grip_point;
@@ -72,6 +84,35 @@ public class HandLock : MonoBehaviour
         this.right_grip_action?.action.Disable();
     }
 
+    private void PlaceVisualHand(Transform visual, Transform tracked,
+                                bool gripping, Vector3 grip_point)
+    {
+        if (visual == null || tracked == null)
+            return;
+
+        visual.position = gripping ? grip_point : tracked.position;
+        visual.rotation = tracked.rotation;
+    }
+
+    private bool CanGrip(Transform hand)
+    {
+        int count = Physics.OverlapSphereNonAlloc(
+            hand.position,
+            this.grip_reach,
+            this.grip_hits,
+            this.grip_mask & ~this.grip_exclude_mask,
+            QueryTriggerInteraction.Ignore
+        );
+
+        for (int i = 0; i < count; ++i)
+        {
+            if (!this.grip_hits[i].transform.IsChildOf(this.transform))
+                return true;
+        }
+
+        return false;
+    }
+
     public void BeginLeftGrip()
     {
         if (this.left_hand == null)
@@ -79,6 +120,9 @@ public class HandLock : MonoBehaviour
             Debug.LogError("My left hand is gone! :(");
             return;
         }
+
+        if (!this.CanGrip(this.left_hand))
+            return;
 
         this.left_grip_point = this.left_hand.position;
         this.is_left_gripping = true;
@@ -96,6 +140,9 @@ public class HandLock : MonoBehaviour
             Debug.LogError("My right hand is gone! :(");
             return;
         }
+
+        if (!this.CanGrip(this.right_hand))
+            return;
 
         this.right_grip_point = this.right_hand.position;
         this.is_right_gripping = true;
@@ -255,5 +302,13 @@ public class HandLock : MonoBehaviour
 
         this.UpdateGripInput();
         this.Simulate(dt);
+    }
+
+    void LateUpdate()
+    {
+        this.PlaceVisualHand(this.left_hand_visual, this.left_hand,
+                            this.is_left_gripping, this.left_grip_point);
+        this.PlaceVisualHand(this.right_hand_visual, this.right_hand,
+                            this.is_right_gripping, this.right_grip_point);
     }
 }
