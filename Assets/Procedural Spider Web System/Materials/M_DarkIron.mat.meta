@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6128b4f41fa5460d8ddf4742b345aec7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 393452
+  packageName: Procedural Spider Web System
+  packageVersion: 1.0
+  assetPath: Assets/Procedural Spider Web System/Materials/M_DarkIron.mat
+  uploadId: 990898

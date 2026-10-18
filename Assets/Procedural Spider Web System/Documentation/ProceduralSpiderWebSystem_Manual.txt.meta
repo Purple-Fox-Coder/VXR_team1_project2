@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 6650d95f894830f429039615c5e523d4
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 393452
+  packageName: Procedural Spider Web System
+  packageVersion: 1.0
+  assetPath: Assets/Procedural Spider Web System/Documentation/ProceduralSpiderWebSystem_Manual.txt
+  uploadId: 990898

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3b3f52b6dd44fcb4a8cd946df56bd1e8
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 381860
+  packageName: Rock & Stone Material Pack
+  packageVersion: 1.0
+  assetPath: Assets/RockAndStoneMaterialPack/URP/Materials/M_Stone_05.mat
+  uploadId: 920772

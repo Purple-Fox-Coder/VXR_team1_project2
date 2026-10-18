@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bee2641036816e041bb6f08ba8da88ac
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 381860
+  packageName: Rock & Stone Material Pack
+  packageVersion: 1.0
+  assetPath: Assets/RockAndStoneMaterialPack/HDRP/Materials/M_Stone_03.mat
+  uploadId: 920772

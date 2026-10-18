@@ -1,0 +1,33 @@
+fileFormatVersion: 2
+guid: 13756da311e74a3ca13a5d035628ab9c
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+  animations:
+    importAnimation: 0
+  meshes:
+    scaleFactor: 1
+    importBlendShapes: 1
+    importVisibility: 1
+    importCameras: 1
+    importLights: 1
+    meshCompression: 0
+    isReadable: 1
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 393452
+  packageName: Procedural Spider Web System
+  packageVersion: 1.0
+  assetPath: Assets/Procedural Spider Web System/Model/SilkDroplet.obj
+  uploadId: 990898
