@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 96df3ce232a24e31bd7bf5c352f8211f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 393452
+  packageName: Procedural Spider Web System
+  packageVersion: 1.0
+  assetPath: Assets/Procedural Spider Web System/Materials/M_DewGlass.mat
+  uploadId: 990898

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e60e38e49b5d09a44a007b4ab0b655df
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 381860
+  packageName: Rock & Stone Material Pack
+  packageVersion: 1.0
+  assetPath: Assets/RockAndStoneMaterialPack/Built-In/Materials/M_StoneGround_02.mat
+  uploadId: 920772

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 586add3470c04cda9952da1362623458
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 393452
+  packageName: Procedural Spider Web System
+  packageVersion: 1.0
+  assetPath: Assets/Procedural Spider Web System/Script/SpiderWebDemoAnimator.cs
+  uploadId: 990898

@@ -1,0 +1,289 @@
+Procedural Spider Web System - User Manual
+=========================================
+
+Procedural Spider Web System creates spider webs between attachment points in a Unity scene.
+
+There are two ways to use it:
+
+- Place WebAnchor objects by hand for an art-directed web.
+- Leave the anchor list empty and let the generator find nearby collider surfaces with raycasts.
+
+For final scenes, manual anchors are recommended. They give better control over the web outline, attachment points, sagging, and decorative droplets.
+
+Package Contents
+----------------
+
+Script
+
+- ProceduralSpiderWeb.cs - the main web generator.
+- WebAnchor.cs - an attachment point used by the generator.
+- SpiderWebDemoAnimator.cs - a small demo script for subtle object motion.
+
+Prefab
+
+- ProceduralSpiderWeb.prefab - ready-to-use generator object.
+- Anchor.prefab - simple attachment point.
+- WebAnchorHook.prefab - decorative metal hook with an anchor setup.
+- SilkDroplet.prefab - small droplet detail for web strands.
+
+Materials
+
+- M_SpiderSilk.mat - material for web strands.
+- M_DewGlass.mat - material for droplets.
+- M_AgedWood.mat, M_CoolStone.mat, M_DarkIron.mat - demo environment materials.
+
+Model
+
+- OBJ models for the hook, droplet, aged beam, broken board, and stone ledge.
+
+Scenes
+
+- ProceduralSpiderWeb_Demo.unity - a ready demo scene showing the intended setup.
+
+Quick Start
+-----------
+
+1. Open the scene where you want to add a spider web.
+2. Drag Prefab/ProceduralSpiderWeb.prefab into the Hierarchy.
+3. Drag several Prefab/Anchor.prefab or Prefab/WebAnchorHook.prefab objects to the places where the web should attach.
+4. Select the ProceduralSpiderWeb object.
+5. In Explicit Anchors, set the list size and drag all anchor objects into the list.
+6. Assign Materials/M_SpiderSilk.mat to Silk Material.
+7. Assign Prefab/SilkDroplet.prefab to Droplet Prefab if droplets are needed.
+8. Open the component context menu and choose Generate Spider Web.
+
+If Live Preview In Editor is enabled, the web updates automatically when settings are changed.
+
+Placing Anchors
+---------------
+
+An anchor is the point where the web is attached to the environment.
+
+Place anchors around the outer edge of the desired web shape:
+
+- on wooden beams;
+- on stones;
+- on walls;
+- on metal hooks;
+- on window corners, cave edges, door frames, or old props.
+
+At least 3 anchors are required. A natural web usually looks best with 8 to 14 anchors placed unevenly. Avoid a perfect circle unless the scene specifically needs a stylized web.
+
+Good starting layout:
+
+1. One anchor at the upper left.
+2. One anchor near the upper center.
+3. One anchor at the upper right.
+4. Two anchors on the left side at different heights.
+5. Two anchors on the right side.
+6. Two or three anchors along the bottom edge.
+
+After placing them, add the objects to the Explicit Anchors list on the generator.
+
+ProceduralSpiderWeb Settings
+----------------------------
+
+Explicit Anchors
+
+Manual attachment points. This is the main workflow for finished scenes.
+
+If this list has objects assigned, the generator uses only those anchors.
+
+Surface Mask
+
+Layer mask used for automatic surface search. This is only used when Explicit Anchors is empty.
+
+For raycast mode:
+
+1. Add colliders to walls, beams, or props.
+2. Make sure those objects are on a layer included in Surface Mask.
+3. Place the generator near the center of the intended web area.
+4. Use Generate Spider Web.
+
+Max Anchor Distance
+
+Maximum search distance for raycast mode. Increase this value if the generator cannot find nearby surfaces.
+
+Max Anchors
+
+Limits how many attachment points are used. For manual setups, 8 to 16 usually works well.
+
+Raycast Samples
+
+Number of directions used for automatic surface search. Higher values can find more complex surrounding geometry, but generation becomes slightly more expensive.
+
+Ring Count
+
+Number of circular strands inside the web.
+
+- 3 - 5 - simple web.
+- 6 - 9 - detailed normal web.
+- 10+ - dense web for larger props.
+
+Sag
+
+Downward sag applied to the strands.
+
+- 0.05 - 0.15 - fresh, tighter web.
+- 0.18 - 0.30 - natural old web.
+- 0.35+ - heavy sag for abandoned areas.
+
+Irregularity
+
+Shape unevenness. Keep this moderate for realistic results.
+
+Recommended range: 0.08 - 0.18.
+
+Seed
+
+Controls deterministic randomness. Change the seed when the current shape is close but you want a different variation.
+
+Silk Material
+
+Material used by the generated LineRenderers. Use M_SpiderSilk.mat or a custom transparent material.
+
+Line Width
+
+Strand thickness in world units. For a normal Unity scale, 0.008 - 0.016 works well.
+
+Droplet Prefab
+
+Prefab spawned on selected strands as dew or small detail.
+
+You can use:
+
+- SilkDroplet.prefab;
+- small dust or dew meshes;
+- a custom transparent mesh.
+
+Droplet Count
+
+Maximum number of droplets. Use fewer droplets for dark scenes or distant webs.
+
+Setting Up a Web in Your Scene
+------------------------------
+
+1. Build the surrounding environment: wall, beams, rocks, props, or a window frame.
+2. Make sure objects use a reasonable Unity scale. Very small or very large scale makes strand width harder to tune.
+3. Add Anchor.prefab to the attachment points.
+4. Use WebAnchorHook.prefab where a visible hook is useful.
+5. Add ProceduralSpiderWeb.prefab near the center of the future web.
+6. Fill the Explicit Anchors list.
+7. Assign M_SpiderSilk.mat to Silk Material.
+8. Assign SilkDroplet.prefab to Droplet Prefab if needed.
+9. Run Generate Spider Web.
+10. Adjust Ring Count, Sag, Irregularity, and Line Width.
+11. Keep Generate On Start enabled for runtime generation, or disable it if the web is already generated and should remain static.
+
+Generate On Start
+-----------------
+
+Enable it when:
+
+- anchors move during gameplay;
+- the scene is built at runtime;
+- the web should be rebuilt when the scene starts.
+
+Disable it when:
+
+- the web is static;
+- the web has already been generated in the editor;
+- no runtime regeneration is needed.
+
+Live Preview In Editor
+----------------------
+
+Enable it while tuning the web shape.
+
+Disable it when:
+
+- the scene is large;
+- many webs are present;
+- setup is finished and automatic editor rebuilds are no longer needed.
+
+Troubleshooting
+---------------
+
+The web does not appear
+
+Check that:
+
+- Explicit Anchors contains at least 3 anchors;
+- assigned anchors still exist in the scene;
+- Silk Material is assigned;
+- Line Width is not too small;
+- the generator object is active.
+
+The web looks too perfect
+
+Increase Irregularity to 0.12 - 0.18 and move a few anchors slightly.
+
+The web sags too much
+
+Decrease Sag.
+
+Droplets are not visible
+
+Check Droplet Prefab, material transparency, prefab scale, and Droplet Count.
+
+Raycast mode does not find surfaces
+
+Check that:
+
+- surfaces have colliders;
+- surfaces are on a layer included in Surface Mask;
+- Max Anchor Distance is high enough;
+- the generator is placed between the surfaces, not far away from them.
+
+Practical Tips
+--------------
+
+- Manual anchor placement gives the best final result.
+- Do not place anchors in perfect symmetry.
+- For large webs, increase Ring Count and tune Line Width.
+- For horror scenes, use more Sag and fewer droplets.
+- For a wet morning look, use thin strands and more droplets.
+- If the web is placed against a bright wall, make the silk material slightly less transparent or a bit darker.
+
+Recommended Starting Values
+---------------------------
+
+Small web:
+
+- Ring Count: 5
+- Sag: 0.12
+- Irregularity: 0.10
+- Line Width: 0.008
+- Droplet Count: 6
+
+Medium web:
+
+- Ring Count: 7
+- Sag: 0.18
+- Irregularity: 0.13
+- Line Width: 0.011
+- Droplet Count: 14
+
+Large old web:
+
+- Ring Count: 9
+- Sag: 0.26
+- Irregularity: 0.18
+- Line Width: 0.014
+- Droplet Count: 20
+
+Demo Scene
+----------
+
+Open Scenes/ProceduralSpiderWeb_Demo.unity to see a complete setup.
+
+The demo scene includes:
+
+- environment objects;
+- anchors;
+- configured generator;
+- silk material;
+- droplet prefab;
+- camera and lighting.
+
+The fastest way to understand the setup is to open the demo scene, select ProceduralSpiderWeb, and inspect the anchors assigned in the Explicit Anchors list.

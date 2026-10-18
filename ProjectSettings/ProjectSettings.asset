@@ -937,8 +937,8 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: VXR_team1_project2
-  metroPackageVersion: 
+  metroPackageName: VXRteam1project2
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -946,7 +946,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: VXR_team1_project2
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: VXR_team1_project2
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0

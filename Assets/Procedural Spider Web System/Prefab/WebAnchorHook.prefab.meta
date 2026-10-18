@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 3c6b69a7a0667cd43ba75fee113ed6c3
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 393452
+  packageName: Procedural Spider Web System
+  packageVersion: 1.0
+  assetPath: Assets/Procedural Spider Web System/Prefab/WebAnchorHook.prefab
+  uploadId: 990898
