@@ -79,12 +79,23 @@ public class HandLock : MonoBehaviour
     [Range(0F, 1F)]
     public float default_grip_volume = 1F;
 
+    [Header("Collision")]
+    public Transform head;
+    [Min(0.01F)]
+    public float head_radius = 0.12F;
+    public float hand_radius = 0.05F;
+    public LayerMask collision_mask = ~0;
+    public LayerMask collision_exclude_mask = 0;
+
     private const float ground_stick_speed = 2F; // keeps player on ground
     private const float epsilon = 0.001F;
 
     private CharacterController controller;
+
     private readonly Collider[] grip_hits = new Collider[8];
+    private readonly Collider[] collision_hits = new Collider[8];
     private readonly Dictionary<int, LayerGripSound> sound_lookup = new Dictionary<int, LayerGripSound>();
+    private SphereCollider probe;
 
     private Vector3 velocity;
     private Vector3 left_grip_point;
@@ -104,6 +115,58 @@ public class HandLock : MonoBehaviour
     {
         this.left_grip_action?.action.Disable();
         this.right_grip_action?.action.Disable();
+    }
+
+    private Vector3 DepenetrateSphere(Vector3 center, float radius)
+    {
+        int count = Physics.OverlapSphereNonAlloc(
+            center,
+            radius,
+            this.collision_hits,
+            this.collision_mask & ~this.collision_exclude_mask,
+            QueryTriggerInteraction.Ignore
+        );
+
+        this.probe.radius = radius / Mathf.Max(epsilon, this.probe.transform.lossyScale.x);
+
+        Vector3 position = center;
+
+        for (int i = 0; i < count; ++i)
+        {
+            Collider hit = this.collision_hits[i];
+            if (hit.transform.IsChildOf(this.transform))
+                continue;
+
+            if (Physics.ComputePenetration(
+                this.probe, position, Quaternion.identity,
+                hit, hit.transform.position, hit.transform.rotation,
+                out Vector3 direction, out float distance
+            ))
+            {
+                position += direction * distance;
+            }
+        }
+
+        return position;
+    }
+
+    private void PushOut(Transform tracked, float radius)
+    {
+        if (tracked == null)
+            return;
+
+        Vector3 push = this.DepenetrateSphere(tracked.position, radius) - tracked.position;
+
+        if (push.sqrMagnitude < epsilon * epsilon)
+            return;
+
+        this.controller.Move(Vector3.ClampMagnitude(push, this.max_correction_per_frame));
+
+        Vector3 normal = push.normalized;
+        float   into   = Vector3.Dot(this.velocity, normal);
+
+        if (into < epsilon)
+            this.velocity -= normal * into;
     }
 
     private void BuildSoundLookup()
@@ -156,7 +219,7 @@ public class HandLock : MonoBehaviour
         if (visual == null || tracked == null)
             return;
 
-        visual.position = gripping ? grip_point : tracked.position;
+        visual.position = gripping ? grip_point : this.DepenetrateSphere(tracked.position, this.hand_radius);
         visual.rotation = tracked.rotation;
     }
 
@@ -367,10 +430,23 @@ public class HandLock : MonoBehaviour
         this.ResolveContact(flags, actual, dt);
         this.was_grounded = (flags & CollisionFlags.Below) != 0
                             || this.controller.isGrounded;
+
+        this.PushOut(this.head, this.head_radius);
+
+        if (!this.is_left_gripping)
+            this.PushOut(this.left_hand, this.hand_radius);
+        if (!this.is_right_gripping)
+            this.PushOut(this.right_hand, this.hand_radius);
     }
 
     void Awake()
     {
+        GameObject probe_object = new GameObject("CollisionProbe");
+        probe_object.transform.SetParent(this.transform, false);
+        this.probe = probe_object.AddComponent<SphereCollider>();
+        this.probe.isTrigger = true;
+        
+        this.BuildSoundLookup();
         this.controller   = GetComponent<CharacterController>();
         this.was_grounded = this.controller.isGrounded;
     }
