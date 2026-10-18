@@ -1,167 +1,492 @@
 fileFormatVersion: 2
 guid: 70b3f9a485a308847952fa8438bfd4b8
+AssetOrigin:
+  serializedVersion: 1
+  productId: 158811
+  packageName: Simple Skeleton
+  packageVersion: 1.1
+  assetPath: Assets/SimpleSkeleton/model/SimpleSkeleton.fbx
+  uploadId: 390398
 ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: DEF-f_index.01.L
-    100002: DEF-f_index.01.R
-    100004: DEF-f_index.02.L
-    100006: DEF-f_index.02.R
-    100008: DEF-f_index.03.L
-    100010: DEF-f_index.03.R
-    100012: DEF-f_middle.01.L
-    100014: DEF-f_middle.01.R
-    100016: DEF-f_middle.02.L
-    100018: DEF-f_middle.02.R
-    100020: DEF-f_middle.03.L
-    100022: DEF-f_middle.03.R
-    100024: DEF-f_pinky.01.L
-    100026: DEF-f_pinky.01.R
-    100028: DEF-f_pinky.02.L
-    100030: DEF-f_pinky.02.R
-    100032: DEF-f_pinky.03.L
-    100034: DEF-f_pinky.03.R
-    100036: DEF-f_ring.01.L
-    100038: DEF-f_ring.01.R
-    100040: DEF-f_ring.02.L
-    100042: DEF-f_ring.02.R
-    100044: DEF-f_ring.03.L
-    100046: DEF-f_ring.03.R
-    100048: DEF-foot.L
-    100050: DEF-foot.R
-    100052: DEF-forearm.L
-    100054: DEF-forearm.R
-    100056: DEF-hand.L
-    100058: DEF-hand.R
-    100060: DEF-jaw
-    100062: DEF-shin.L
-    100064: DEF-shin.R
-    100066: DEF-shoulder.L
-    100068: DEF-shoulder.R
-    100070: DEF-spine
-    100072: DEF-spine.001
-    100074: DEF-spine.002
-    100076: DEF-spine.003
-    100078: DEF-spine.004
-    100080: DEF-spine.005
-    100082: DEF-spine.006
-    100084: DEF-thigh.L
-    100086: DEF-thigh.R
-    100088: DEF-thumb.01.L
-    100090: DEF-thumb.01.R
-    100092: DEF-thumb.02.L
-    100094: DEF-thumb.02.R
-    100096: DEF-thumb.03.L
-    100098: DEF-thumb.03.R
-    100100: DEF-toe.L
-    100102: DEF-toe.R
-    100104: DEF-upper_arm.L
-    100106: DEF-upper_arm.R
-    100108: root
-    100110: //RootNode
-    100112: SimpleSkeleton
-    100114: SimpleSkeleton_rig
-    400000: DEF-f_index.01.L
-    400002: DEF-f_index.01.R
-    400004: DEF-f_index.02.L
-    400006: DEF-f_index.02.R
-    400008: DEF-f_index.03.L
-    400010: DEF-f_index.03.R
-    400012: DEF-f_middle.01.L
-    400014: DEF-f_middle.01.R
-    400016: DEF-f_middle.02.L
-    400018: DEF-f_middle.02.R
-    400020: DEF-f_middle.03.L
-    400022: DEF-f_middle.03.R
-    400024: DEF-f_pinky.01.L
-    400026: DEF-f_pinky.01.R
-    400028: DEF-f_pinky.02.L
-    400030: DEF-f_pinky.02.R
-    400032: DEF-f_pinky.03.L
-    400034: DEF-f_pinky.03.R
-    400036: DEF-f_ring.01.L
-    400038: DEF-f_ring.01.R
-    400040: DEF-f_ring.02.L
-    400042: DEF-f_ring.02.R
-    400044: DEF-f_ring.03.L
-    400046: DEF-f_ring.03.R
-    400048: DEF-foot.L
-    400050: DEF-foot.R
-    400052: DEF-forearm.L
-    400054: DEF-forearm.R
-    400056: DEF-hand.L
-    400058: DEF-hand.R
-    400060: DEF-jaw
-    400062: DEF-shin.L
-    400064: DEF-shin.R
-    400066: DEF-shoulder.L
-    400068: DEF-shoulder.R
-    400070: DEF-spine
-    400072: DEF-spine.001
-    400074: DEF-spine.002
-    400076: DEF-spine.003
-    400078: DEF-spine.004
-    400080: DEF-spine.005
-    400082: DEF-spine.006
-    400084: DEF-thigh.L
-    400086: DEF-thigh.R
-    400088: DEF-thumb.01.L
-    400090: DEF-thumb.01.R
-    400092: DEF-thumb.02.L
-    400094: DEF-thumb.02.R
-    400096: DEF-thumb.03.L
-    400098: DEF-thumb.03.R
-    400100: DEF-toe.L
-    400102: DEF-toe.R
-    400104: DEF-upper_arm.L
-    400106: DEF-upper_arm.R
-    400108: root
-    400110: //RootNode
-    400112: SimpleSkeleton
-    400114: SimpleSkeleton_rig
-    4300000: SimpleSkeleton
-    7400000: SimpleSkeleton_idle_upright
-    7400002: SimpleSkeleton_walking_pull_L
-    7400004: SimpleSkeleton_walking_push_L
-    7400006: SimpleSkeleton_walking_pull_R
-    7400008: SimpleSkeleton_walking_push_R
-    7400010: SimpleSkeleton_walking_turnR_push_R
-    7400012: SimpleSkeleton_walking_turnR_pull_L
-    7400014: SimpleSkeleton_walking_turnR_push_L
-    7400016: SimpleSkeleton_walking_turnR_pull_R
-    7400018: SimpleSkeleton_walking_turnL_push_L
-    7400020: SimpleSkeleton_walking_turnL_pull_R
-    7400022: SimpleSkeleton_walking_turnL_push_R
-    7400024: SimpleSkeleton_walking_turnL_pull_L
-    7400026: SimpleSkeleton_running_pull_L
-    7400028: SimpleSkeleton_running_push_L
-    7400030: SimpleSkeleton_running_pull_R
-    7400032: SimpleSkeleton_running_push_R
-    7400034: SimpleSkeleton_rolling
-    7400036: SimpleSkeleton_turnInPlace_R
-    7400038: SimpleSkeleton_turnInPlace_L
-    7400040: SimpleSkeleton_backwalk_pull
-    7400042: SimpleSkeleton_backwalk_push
-    7400044: SimpleSkeleton_sidewalk_pull_R
-    7400046: SimpleSkeleton_sidewalk_push_R
-    7400048: SimpleSkeleton_sidewalk_pull_L
-    7400050: SimpleSkeleton_sidewalk_push_L
-    7400052: SimpleSkeleton_knockdown_forward
-    7400054: SimpleSkeleton_jump
-    7400056: SimpleSkeleton_punch_idle
-    7400058: SimpleSkeleton_punch_straight_L
-    7400060: SimpleSkeleton_punch_straight_R
-    7400062: SimpleSkeleton_running_turnR_push_L
-    7400064: SimpleSkeleton_running_turnR_pull_R
-    7400066: SimpleSkeleton_running_turnR_push_R
-    7400068: SimpleSkeleton_running_turnR_pull_L
-    7400070: SimpleSkeleton_running_turnL_push_R
-    7400072: SimpleSkeleton_running_turnL_pull_L
-    7400074: SimpleSkeleton_running_turnL_push_L
-    7400076: SimpleSkeleton_running_turnL_pull_R
-    9500000: //RootNode
-    13700000: SimpleSkeleton
-    2186277476908879412: ImportLogs
+  serializedVersion: 24300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: DEF-f_index.01.L
+  - first:
+      1: 100002
+    second: DEF-f_index.01.R
+  - first:
+      1: 100004
+    second: DEF-f_index.02.L
+  - first:
+      1: 100006
+    second: DEF-f_index.02.R
+  - first:
+      1: 100008
+    second: DEF-f_index.03.L
+  - first:
+      1: 100010
+    second: DEF-f_index.03.R
+  - first:
+      1: 100012
+    second: DEF-f_middle.01.L
+  - first:
+      1: 100014
+    second: DEF-f_middle.01.R
+  - first:
+      1: 100016
+    second: DEF-f_middle.02.L
+  - first:
+      1: 100018
+    second: DEF-f_middle.02.R
+  - first:
+      1: 100020
+    second: DEF-f_middle.03.L
+  - first:
+      1: 100022
+    second: DEF-f_middle.03.R
+  - first:
+      1: 100024
+    second: DEF-f_pinky.01.L
+  - first:
+      1: 100026
+    second: DEF-f_pinky.01.R
+  - first:
+      1: 100028
+    second: DEF-f_pinky.02.L
+  - first:
+      1: 100030
+    second: DEF-f_pinky.02.R
+  - first:
+      1: 100032
+    second: DEF-f_pinky.03.L
+  - first:
+      1: 100034
+    second: DEF-f_pinky.03.R
+  - first:
+      1: 100036
+    second: DEF-f_ring.01.L
+  - first:
+      1: 100038
+    second: DEF-f_ring.01.R
+  - first:
+      1: 100040
+    second: DEF-f_ring.02.L
+  - first:
+      1: 100042
+    second: DEF-f_ring.02.R
+  - first:
+      1: 100044
+    second: DEF-f_ring.03.L
+  - first:
+      1: 100046
+    second: DEF-f_ring.03.R
+  - first:
+      1: 100048
+    second: DEF-foot.L
+  - first:
+      1: 100050
+    second: DEF-foot.R
+  - first:
+      1: 100052
+    second: DEF-forearm.L
+  - first:
+      1: 100054
+    second: DEF-forearm.R
+  - first:
+      1: 100056
+    second: DEF-hand.L
+  - first:
+      1: 100058
+    second: DEF-hand.R
+  - first:
+      1: 100060
+    second: DEF-jaw
+  - first:
+      1: 100062
+    second: DEF-shin.L
+  - first:
+      1: 100064
+    second: DEF-shin.R
+  - first:
+      1: 100066
+    second: DEF-shoulder.L
+  - first:
+      1: 100068
+    second: DEF-shoulder.R
+  - first:
+      1: 100070
+    second: DEF-spine
+  - first:
+      1: 100072
+    second: DEF-spine.001
+  - first:
+      1: 100074
+    second: DEF-spine.002
+  - first:
+      1: 100076
+    second: DEF-spine.003
+  - first:
+      1: 100078
+    second: DEF-spine.004
+  - first:
+      1: 100080
+    second: DEF-spine.005
+  - first:
+      1: 100082
+    second: DEF-spine.006
+  - first:
+      1: 100084
+    second: DEF-thigh.L
+  - first:
+      1: 100086
+    second: DEF-thigh.R
+  - first:
+      1: 100088
+    second: DEF-thumb.01.L
+  - first:
+      1: 100090
+    second: DEF-thumb.01.R
+  - first:
+      1: 100092
+    second: DEF-thumb.02.L
+  - first:
+      1: 100094
+    second: DEF-thumb.02.R
+  - first:
+      1: 100096
+    second: DEF-thumb.03.L
+  - first:
+      1: 100098
+    second: DEF-thumb.03.R
+  - first:
+      1: 100100
+    second: DEF-toe.L
+  - first:
+      1: 100102
+    second: DEF-toe.R
+  - first:
+      1: 100104
+    second: DEF-upper_arm.L
+  - first:
+      1: 100106
+    second: DEF-upper_arm.R
+  - first:
+      1: 100108
+    second: root
+  - first:
+      1: 100110
+    second: //RootNode
+  - first:
+      1: 100112
+    second: SimpleSkeleton
+  - first:
+      1: 100114
+    second: SimpleSkeleton_rig
+  - first:
+      4: 400000
+    second: DEF-f_index.01.L
+  - first:
+      4: 400002
+    second: DEF-f_index.01.R
+  - first:
+      4: 400004
+    second: DEF-f_index.02.L
+  - first:
+      4: 400006
+    second: DEF-f_index.02.R
+  - first:
+      4: 400008
+    second: DEF-f_index.03.L
+  - first:
+      4: 400010
+    second: DEF-f_index.03.R
+  - first:
+      4: 400012
+    second: DEF-f_middle.01.L
+  - first:
+      4: 400014
+    second: DEF-f_middle.01.R
+  - first:
+      4: 400016
+    second: DEF-f_middle.02.L
+  - first:
+      4: 400018
+    second: DEF-f_middle.02.R
+  - first:
+      4: 400020
+    second: DEF-f_middle.03.L
+  - first:
+      4: 400022
+    second: DEF-f_middle.03.R
+  - first:
+      4: 400024
+    second: DEF-f_pinky.01.L
+  - first:
+      4: 400026
+    second: DEF-f_pinky.01.R
+  - first:
+      4: 400028
+    second: DEF-f_pinky.02.L
+  - first:
+      4: 400030
+    second: DEF-f_pinky.02.R
+  - first:
+      4: 400032
+    second: DEF-f_pinky.03.L
+  - first:
+      4: 400034
+    second: DEF-f_pinky.03.R
+  - first:
+      4: 400036
+    second: DEF-f_ring.01.L
+  - first:
+      4: 400038
+    second: DEF-f_ring.01.R
+  - first:
+      4: 400040
+    second: DEF-f_ring.02.L
+  - first:
+      4: 400042
+    second: DEF-f_ring.02.R
+  - first:
+      4: 400044
+    second: DEF-f_ring.03.L
+  - first:
+      4: 400046
+    second: DEF-f_ring.03.R
+  - first:
+      4: 400048
+    second: DEF-foot.L
+  - first:
+      4: 400050
+    second: DEF-foot.R
+  - first:
+      4: 400052
+    second: DEF-forearm.L
+  - first:
+      4: 400054
+    second: DEF-forearm.R
+  - first:
+      4: 400056
+    second: DEF-hand.L
+  - first:
+      4: 400058
+    second: DEF-hand.R
+  - first:
+      4: 400060
+    second: DEF-jaw
+  - first:
+      4: 400062
+    second: DEF-shin.L
+  - first:
+      4: 400064
+    second: DEF-shin.R
+  - first:
+      4: 400066
+    second: DEF-shoulder.L
+  - first:
+      4: 400068
+    second: DEF-shoulder.R
+  - first:
+      4: 400070
+    second: DEF-spine
+  - first:
+      4: 400072
+    second: DEF-spine.001
+  - first:
+      4: 400074
+    second: DEF-spine.002
+  - first:
+      4: 400076
+    second: DEF-spine.003
+  - first:
+      4: 400078
+    second: DEF-spine.004
+  - first:
+      4: 400080
+    second: DEF-spine.005
+  - first:
+      4: 400082
+    second: DEF-spine.006
+  - first:
+      4: 400084
+    second: DEF-thigh.L
+  - first:
+      4: 400086
+    second: DEF-thigh.R
+  - first:
+      4: 400088
+    second: DEF-thumb.01.L
+  - first:
+      4: 400090
+    second: DEF-thumb.01.R
+  - first:
+      4: 400092
+    second: DEF-thumb.02.L
+  - first:
+      4: 400094
+    second: DEF-thumb.02.R
+  - first:
+      4: 400096
+    second: DEF-thumb.03.L
+  - first:
+      4: 400098
+    second: DEF-thumb.03.R
+  - first:
+      4: 400100
+    second: DEF-toe.L
+  - first:
+      4: 400102
+    second: DEF-toe.R
+  - first:
+      4: 400104
+    second: DEF-upper_arm.L
+  - first:
+      4: 400106
+    second: DEF-upper_arm.R
+  - first:
+      4: 400108
+    second: root
+  - first:
+      4: 400110
+    second: //RootNode
+  - first:
+      4: 400112
+    second: SimpleSkeleton
+  - first:
+      4: 400114
+    second: SimpleSkeleton_rig
+  - first:
+      43: 4300000
+    second: SimpleSkeleton
+  - first:
+      74: 7400000
+    second: SimpleSkeleton_idle_upright
+  - first:
+      74: 7400002
+    second: SimpleSkeleton_walking_pull_L
+  - first:
+      74: 7400004
+    second: SimpleSkeleton_walking_push_L
+  - first:
+      74: 7400006
+    second: SimpleSkeleton_walking_pull_R
+  - first:
+      74: 7400008
+    second: SimpleSkeleton_walking_push_R
+  - first:
+      74: 7400010
+    second: SimpleSkeleton_walking_turnR_push_R
+  - first:
+      74: 7400012
+    second: SimpleSkeleton_walking_turnR_pull_L
+  - first:
+      74: 7400014
+    second: SimpleSkeleton_walking_turnR_push_L
+  - first:
+      74: 7400016
+    second: SimpleSkeleton_walking_turnR_pull_R
+  - first:
+      74: 7400018
+    second: SimpleSkeleton_walking_turnL_push_L
+  - first:
+      74: 7400020
+    second: SimpleSkeleton_walking_turnL_pull_R
+  - first:
+      74: 7400022
+    second: SimpleSkeleton_walking_turnL_push_R
+  - first:
+      74: 7400024
+    second: SimpleSkeleton_walking_turnL_pull_L
+  - first:
+      74: 7400026
+    second: SimpleSkeleton_running_pull_L
+  - first:
+      74: 7400028
+    second: SimpleSkeleton_running_push_L
+  - first:
+      74: 7400030
+    second: SimpleSkeleton_running_pull_R
+  - first:
+      74: 7400032
+    second: SimpleSkeleton_running_push_R
+  - first:
+      74: 7400034
+    second: SimpleSkeleton_rolling
+  - first:
+      74: 7400036
+    second: SimpleSkeleton_turnInPlace_R
+  - first:
+      74: 7400038
+    second: SimpleSkeleton_turnInPlace_L
+  - first:
+      74: 7400040
+    second: SimpleSkeleton_backwalk_pull
+  - first:
+      74: 7400042
+    second: SimpleSkeleton_backwalk_push
+  - first:
+      74: 7400044
+    second: SimpleSkeleton_sidewalk_pull_R
+  - first:
+      74: 7400046
+    second: SimpleSkeleton_sidewalk_push_R
+  - first:
+      74: 7400048
+    second: SimpleSkeleton_sidewalk_pull_L
+  - first:
+      74: 7400050
+    second: SimpleSkeleton_sidewalk_push_L
+  - first:
+      74: 7400052
+    second: SimpleSkeleton_knockdown_forward
+  - first:
+      74: 7400054
+    second: SimpleSkeleton_jump
+  - first:
+      74: 7400056
+    second: SimpleSkeleton_punch_idle
+  - first:
+      74: 7400058
+    second: SimpleSkeleton_punch_straight_L
+  - first:
+      74: 7400060
+    second: SimpleSkeleton_punch_straight_R
+  - first:
+      74: 7400062
+    second: SimpleSkeleton_running_turnR_push_L
+  - first:
+      74: 7400064
+    second: SimpleSkeleton_running_turnR_pull_R
+  - first:
+      74: 7400066
+    second: SimpleSkeleton_running_turnR_push_R
+  - first:
+      74: 7400068
+    second: SimpleSkeleton_running_turnR_pull_L
+  - first:
+      74: 7400070
+    second: SimpleSkeleton_running_turnL_push_R
+  - first:
+      74: 7400072
+    second: SimpleSkeleton_running_turnL_pull_L
+  - first:
+      74: 7400074
+    second: SimpleSkeleton_running_turnL_push_L
+  - first:
+      74: 7400076
+    second: SimpleSkeleton_running_turnL_pull_R
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: SimpleSkeleton
+  - first:
+      41386430: 2186277476908879412
+    second: ImportLogs
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -169,18 +494,18 @@ ModelImporter:
       name: bone
     second: {fileID: 2100000, guid: 6b8453203255afe4db6300334393d2ba, type: 2}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
+    searchTexturesGlobally: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: "\nClip 'SimpleSkeleton_punch_straight_R' has import
       animation warnings that might lower retargeting quality:\nNote: Activate translation
@@ -336,6 +661,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_idle_upright
       takeName: SimpleSkeleton_idle_upright
+      internalID: 0
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -364,6 +690,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_walking_pull_L
       takeName: SimpleSkeleton_walking
+      internalID: 0
       firstFrame: 0
       lastFrame: 10
       wrapMode: 0
@@ -392,6 +719,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_walking_push_L
       takeName: SimpleSkeleton_walking
+      internalID: 0
       firstFrame: 10
       lastFrame: 20
       wrapMode: 0
@@ -420,6 +748,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_walking_pull_R
       takeName: SimpleSkeleton_walking
+      internalID: 0
       firstFrame: 0
       lastFrame: 10
       wrapMode: 0
@@ -448,6 +777,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_walking_push_R
       takeName: SimpleSkeleton_walking
+      internalID: 0
       firstFrame: 10
       lastFrame: 20
       wrapMode: 0
@@ -476,6 +806,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_walking_turnR_push_R
       takeName: SimpleSkeleton_walking_turn
+      internalID: 0
       firstFrame: 0
       lastFrame: 10
       wrapMode: 0
@@ -504,6 +835,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_walking_turnR_pull_L
       takeName: SimpleSkeleton_walking_turn
+      internalID: 0
       firstFrame: 10
       lastFrame: 20
       wrapMode: 0
@@ -532,6 +864,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_walking_turnR_push_L
       takeName: SimpleSkeleton_walking_turn
+      internalID: 0
       firstFrame: 20
       lastFrame: 30
       wrapMode: 0
@@ -560,6 +893,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_walking_turnR_pull_R
       takeName: SimpleSkeleton_walking_turn
+      internalID: 0
       firstFrame: 30
       lastFrame: 40
       wrapMode: 0
@@ -588,6 +922,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_walking_turnL_push_L
       takeName: SimpleSkeleton_walking_turn
+      internalID: 0
       firstFrame: 0
       lastFrame: 10
       wrapMode: 0
@@ -616,6 +951,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_walking_turnL_pull_R
       takeName: SimpleSkeleton_walking_turn
+      internalID: 0
       firstFrame: 10
       lastFrame: 20
       wrapMode: 0
@@ -644,6 +980,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_walking_turnL_push_R
       takeName: SimpleSkeleton_walking_turn
+      internalID: 0
       firstFrame: 20
       lastFrame: 30
       wrapMode: 0
@@ -672,6 +1009,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_walking_turnL_pull_L
       takeName: SimpleSkeleton_walking_turn
+      internalID: 0
       firstFrame: 30
       lastFrame: 40
       wrapMode: 0
@@ -700,6 +1038,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_running_pull_L
       takeName: SimpleSkeleton_running
+      internalID: 0
       firstFrame: 0
       lastFrame: 10
       wrapMode: 0
@@ -728,6 +1067,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_running_push_L
       takeName: SimpleSkeleton_running
+      internalID: 0
       firstFrame: 10
       lastFrame: 20
       wrapMode: 0
@@ -756,6 +1096,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_running_pull_R
       takeName: SimpleSkeleton_running
+      internalID: 0
       firstFrame: 0
       lastFrame: 10
       wrapMode: 0
@@ -784,6 +1125,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_running_push_R
       takeName: SimpleSkeleton_running
+      internalID: 0
       firstFrame: 10
       lastFrame: 20
       wrapMode: 0
@@ -812,6 +1154,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_rolling
       takeName: SimpleSkeleton_rolling
+      internalID: 0
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -840,6 +1183,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_turnInPlace_R
       takeName: SimpleSkeleton_turnInPlace
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -868,6 +1212,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_turnInPlace_L
       takeName: SimpleSkeleton_turnInPlace
+      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -896,6 +1241,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_backwalk_pull
       takeName: SimpleSkeleton_backwalk
+      internalID: 0
       firstFrame: 0
       lastFrame: 10
       wrapMode: 0
@@ -924,6 +1270,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_backwalk_push
       takeName: SimpleSkeleton_backwalk
+      internalID: 0
       firstFrame: 10
       lastFrame: 20
       wrapMode: 0
@@ -952,6 +1299,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_sidewalk_pull_R
       takeName: SimpleSkeleton_sidewalk
+      internalID: 0
       firstFrame: 0
       lastFrame: 10
       wrapMode: 0
@@ -980,6 +1328,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_sidewalk_push_R
       takeName: SimpleSkeleton_sidewalk
+      internalID: 0
       firstFrame: 10
       lastFrame: 20
       wrapMode: 0
@@ -1008,6 +1357,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_sidewalk_pull_L
       takeName: SimpleSkeleton_sidewalk
+      internalID: 0
       firstFrame: 20
       lastFrame: 30
       wrapMode: 0
@@ -1036,6 +1386,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_sidewalk_push_L
       takeName: SimpleSkeleton_sidewalk
+      internalID: 0
       firstFrame: 30
       lastFrame: 40
       wrapMode: 0
@@ -1064,6 +1415,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_knockdown_forward
       takeName: SimpleSkeleton_knockdown_forward
+      internalID: 0
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -1092,6 +1444,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_jump
       takeName: SimpleSkeleton_jump
+      internalID: 0
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -1120,6 +1473,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_punch_idle
       takeName: SimpleSkeleton_punch_idle
+      internalID: 0
       firstFrame: 0
       lastFrame: 60
       wrapMode: 0
@@ -1148,6 +1502,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_punch_straight_L
       takeName: SimpleSkeleton_punch_straight_L
+      internalID: 0
       firstFrame: 0
       lastFrame: 20
       wrapMode: 0
@@ -1176,6 +1531,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_punch_straight_R
       takeName: SimpleSkeleton_punch_straight_R
+      internalID: 0
       firstFrame: 0
       lastFrame: 20
       wrapMode: 0
@@ -1204,6 +1560,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_running_turnR_push_L
       takeName: SimpleSkeleton_running_turn
+      internalID: 0
       firstFrame: 10
       lastFrame: 20
       wrapMode: 0
@@ -1232,6 +1589,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_running_turnR_pull_R
       takeName: SimpleSkeleton_running_turn
+      internalID: 0
       firstFrame: 20
       lastFrame: 30
       wrapMode: 0
@@ -1260,6 +1618,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_running_turnR_push_R
       takeName: SimpleSkeleton_running_turn
+      internalID: 0
       firstFrame: 30
       lastFrame: 40
       wrapMode: 0
@@ -1288,6 +1647,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_running_turnR_pull_L
       takeName: SimpleSkeleton_running_turn
+      internalID: 0
       firstFrame: 0
       lastFrame: 10
       wrapMode: 0
@@ -1316,6 +1676,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_running_turnL_push_R
       takeName: SimpleSkeleton_running_turn
+      internalID: 0
       firstFrame: 10
       lastFrame: 20
       wrapMode: 0
@@ -1344,6 +1705,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_running_turnL_pull_L
       takeName: SimpleSkeleton_running_turn
+      internalID: 0
       firstFrame: 20
       lastFrame: 30
       wrapMode: 0
@@ -1372,6 +1734,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_running_turnL_push_L
       takeName: SimpleSkeleton_running_turn
+      internalID: 0
       firstFrame: 30
       lastFrame: 40
       wrapMode: 0
@@ -1400,6 +1763,7 @@ ModelImporter:
     - serializedVersion: 16
       name: SimpleSkeleton_running_turnL_pull_R
       takeName: SimpleSkeleton_running_turn
+      internalID: 0
       firstFrame: 0
       lastFrame: 10
       wrapMode: 0
@@ -1432,25 +1796,39 @@ ModelImporter:
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    generateMeshLods: 0
+    meshLodGenerationFlags: 0
+    maximumMeshLod: -1
+    meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.01
-    hasPreviousCalculatedGlobalScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -1459,10 +1837,10 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
-    serializedVersion: 2
+    serializedVersion: 3
     human:
     - boneName: DEF-spine
       humanName: Hips
@@ -2180,27 +2558,26 @@ ModelImporter:
       rotation: {x: 0.0092659015, y: 0.9989317, z: -0.045271896, w: 0.00023817061}
       scale: {x: 1.0000005, y: 1.0000005, z: 1.0000035}
     armTwist: 0.5
-    foreArmTwist: 0.5
+    foreArmTwist: 0.2
     upperLegTwist: 0.5
     legTwist: 0.5
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 158811
-  packageName: Simple Skeleton
-  packageVersion: 1.1
-  assetPath: Assets/SimpleSkeleton/model/SimpleSkeleton.fbx
-  uploadId: 390398
