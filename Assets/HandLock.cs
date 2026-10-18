@@ -1,9 +1,22 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
 public class HandLock : MonoBehaviour
 {
+    [Serializable]
+    public class LayerGripSound
+    {
+        [Tooltip("Layers that use this sound (can select multiple)")]
+        public LayerMask layers;
+        [Tooltip("One is picked at random each grab")]
+        public AudioClip[] clips;
+        [Range(0F, 1F)]
+        public float volume = 1F;
+    }
+
     [Header("Hand Positions")]
     public Transform left_hand;
     public Transform right_hand;
@@ -58,11 +71,20 @@ public class HandLock : MonoBehaviour
     [Min(0F)]
     public float grip_reach = 0.08F;
 
+    [Header("Grip Sounds")]
+    [Tooltip("Sound per layer.  First entry containing the layer wins.")]
+    public List<LayerGripSound> layer_sounds = new List<LayerGripSound>();
+    [Tooltip("Played when the grabbed layer has no sound defined above")]
+    public AudioClip default_grip_sound;
+    [Range(0F, 1F)]
+    public float default_grip_volume = 1F;
+
     private const float ground_stick_speed = 2F; // keeps player on ground
     private const float epsilon = 0.001F;
 
     private CharacterController controller;
     private readonly Collider[] grip_hits = new Collider[8];
+    private readonly Dictionary<int, LayerGripSound> sound_lookup = new Dictionary<int, LayerGripSound>();
 
     private Vector3 velocity;
     private Vector3 left_grip_point;
@@ -84,6 +106,50 @@ public class HandLock : MonoBehaviour
         this.right_grip_action?.action.Disable();
     }
 
+    private void BuildSoundLookup()
+    {
+        this.sound_lookup.Clear();
+
+        foreach (LayerGripSound entry in this.layer_sounds)
+        {
+            if (entry == null)
+                continue;
+
+            for (int layer = 0; layer < 32; ++layer)
+            {
+                if ((entry.layers.value & (1 << layer)) == 0)
+                    continue;
+
+                if (!this.sound_lookup.ContainsKey(layer))
+                    this.sound_lookup.Add(layer, entry);
+            }
+        }
+    }
+
+    private void PlayGripSound(Collider surface, Vector3 position)
+    {
+        AudioClip clip = this.default_grip_sound;
+        float volume = this.default_grip_volume;
+
+        // theoretically allow for variations
+        if (this.sound_lookup.TryGetValue(surface.gameObject.layer, out LayerGripSound entry)
+            && entry.clips != null && entry.clips.Length > 0)
+        {
+            AudioClip picked = entry.clips[UnityEngine.Random.Range(0, entry.clips.Length)];
+
+            if (picked != null)
+            {
+                clip = picked;
+                volume = entry.volume;
+            }
+        }
+
+        if (clip == null)
+            return;
+
+        AudioSource.PlayClipAtPoint(clip, position, volume);
+    }
+
     private void PlaceVisualHand(Transform visual, Transform tracked,
                                 bool gripping, Vector3 grip_point)
     {
@@ -94,8 +160,10 @@ public class HandLock : MonoBehaviour
         visual.rotation = tracked.rotation;
     }
 
-    private bool CanGrip(Transform hand)
+    private bool CanGrip(Transform hand, out Collider surface)
     {
+        surface = null;
+        
         int count = Physics.OverlapSphereNonAlloc(
             hand.position,
             this.grip_reach,
@@ -104,13 +172,25 @@ public class HandLock : MonoBehaviour
             QueryTriggerInteraction.Ignore
         );
 
+        float best = float.MaxValue;
+
         for (int i = 0; i < count; ++i)
         {
-            if (!this.grip_hits[i].transform.IsChildOf(this.transform))
-                return true;
+            Collider hit = this.grip_hits[i];
+            
+            if (hit.transform.IsChildOf(this.transform))
+                continue;
+
+            float dist = (hit.ClosestPoint(hand.position) - hand.position).sqrMagnitude;
+
+            if (dist < best)
+            {
+                best = dist;
+                surface = hit;
+            }
         }
 
-        return false;
+        return surface != null;
     }
 
     public void BeginLeftGrip()
@@ -121,11 +201,12 @@ public class HandLock : MonoBehaviour
             return;
         }
 
-        if (!this.CanGrip(this.left_hand))
+        if (!this.CanGrip(this.left_hand, out Collider surface))
             return;
 
         this.left_grip_point = this.left_hand.position;
         this.is_left_gripping = true;
+        this.PlayGripSound(surface, this.left_grip_point);
     }
 
     public void EndLeftGrip()
@@ -141,11 +222,12 @@ public class HandLock : MonoBehaviour
             return;
         }
 
-        if (!this.CanGrip(this.right_hand))
+        if (!this.CanGrip(this.right_hand, out Collider surface))
             return;
 
         this.right_grip_point = this.right_hand.position;
         this.is_right_gripping = true;
+        this.PlayGripSound(surface, this.right_grip_point);
     }
 
     public void EndRightGrip()

@@ -381,6 +381,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   grip_reach: 0.08
+  layer_sounds: []
+  default_grip_sound: {fileID: 8300000, guid: 51dfd203afeb9f17696014e2f29fad69, type: 3}
+  default_grip_volume: 1
 --- !u!4 &441087514 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1670256625, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
