@@ -87,6 +87,28 @@ public class HandLock : MonoBehaviour
     public LayerMask collision_mask = ~0;
     public LayerMask collision_exclude_mask = 0;
 
+    [Header("Interactables")]
+    [Tooltip("Layers whose non-kinematic rigidbodies may be moved by grip")]
+    public LayerMask moveable_mask = 0;
+    [Range(0F, 1F)]
+    public float object_force_scale = 1F;
+
+    private class Grip
+    {
+        public bool active;
+        public Vector3 point;
+        public Rigidbody body;
+        public Vector3 local_point;
+        public bool on_body;
+
+        public Vector3 Anchor => this.on_body && this.body != null
+                            ? this.body.transform.TransformPoint(this.local_point)
+                            : this.point;
+    }
+
+    private readonly Grip left_grip = new Grip();
+    private readonly Grip right_grip = new Grip();
+
     private const float ground_stick_speed = 2F; // keeps player on ground
     private const float epsilon = 0.001F;
 
@@ -98,11 +120,7 @@ public class HandLock : MonoBehaviour
     private SphereCollider probe;
 
     private Vector3 velocity;
-    private Vector3 left_grip_point;
-    private Vector3 right_grip_point;
 
-    private bool is_left_gripping;
-    private bool is_right_gripping;
     private bool was_grounded;
 
     void OnEnable()
@@ -135,6 +153,10 @@ public class HandLock : MonoBehaviour
         {
             Collider hit = this.collision_hits[i];
             if (hit.transform.IsChildOf(this.transform))
+                continue;
+
+            Rigidbody held = hit.attachedRigidbody;
+            if (held != null && (held == this.left_grip.body || held == this.right_grip.body))
                 continue;
 
             if (Physics.ComputePenetration(
@@ -256,46 +278,49 @@ public class HandLock : MonoBehaviour
         return surface != null;
     }
 
-    public void BeginLeftGrip()
+    private void BeginGrip(Grip grip, Transform hand)
     {
-        if (this.left_hand == null)
-        {
-            Debug.LogError("My left hand is gone! :(");
+        if (!this.CanGrip(hand, out Collider surface))
             return;
+
+        Rigidbody rb = surface.attachedRigidbody;
+
+        bool moveable = rb != null
+                       && !rb.isKinematic
+                       && ((1 << surface.gameObject.layer) & this.moveable_mask.value) != 0;
+        grip.active = true;
+        grip.point = hand.position;
+        grip.body = moveable ? rb : null;
+        grip.on_body = moveable;
+        if (moveable)
+        {
+            grip.local_point = rb.transform.InverseTransformPoint(grip.point);
+            this.SetIgnoreHeld(rb, true);
         }
 
-        if (!this.CanGrip(this.left_hand, out Collider surface))
-            return;
+        this.PlayGripSound(surface, grip.point);
+    }
 
-        this.left_grip_point = this.left_hand.position;
-        this.is_left_gripping = true;
-        this.PlayGripSound(surface, this.left_grip_point);
+    public void BeginLeftGrip()
+    {
+        if (this.left_hand != null)
+            this.BeginGrip(this.left_grip, this.left_hand);
     }
 
     public void EndLeftGrip()
     {
-        this.is_left_gripping = false;
+        this.ReleaseGrip(this.left_grip, this.right_grip);
     }
 
     public void BeginRightGrip()
     {
-        if (this.right_hand == null)
-        {
-            Debug.LogError("My right hand is gone! :(");
-            return;
-        }
-
-        if (!this.CanGrip(this.right_hand, out Collider surface))
-            return;
-
-        this.right_grip_point = this.right_hand.position;
-        this.is_right_gripping = true;
-        this.PlayGripSound(surface, this.right_grip_point);
+        if (this.right_hand != null)
+            this.BeginGrip(this.right_grip, this.right_hand);
     }
 
     public void EndRightGrip()
     {
-        this.is_right_gripping = false;
+        this.ReleaseGrip(this.right_grip, this.left_grip);
     }
 
     private void UpdateGripInput()
@@ -324,33 +349,85 @@ public class HandLock : MonoBehaviour
 
     // One arm as a spring: pulls the body so the hand returns to
     // where it grabbed. Capped by how hard an arm can really pull.
-    private Vector3 ArmForce(Transform hand, Vector3 grip_point)
+    private Vector3 ArmForce(Transform hand, Grip grip, float damping, float dt)
     {
-        Vector3 stretch = grip_point - hand.position;
+        if (grip.on_body && grip.body == null)
+        {
+            grip.active = false;
+            grip.on_body = false;
+            return Vector3.zero;
+        }
 
-        return Vector3.ClampMagnitude(
-            stretch * this.grip_stiffness,
-            this.max_arm_force
-        );
+        Vector3 anchor = grip.Anchor;
+        Rigidbody rb = grip.body;
+        Vector3 anchor_vel = rb != null ? rb.GetPointVelocity(anchor) : Vector3.zero;
+    
+        float k = this.grip_stiffness;
+        float c = damping;
+
+        if (rb != null)
+        {
+            Vector3 it = rb.inertiaTensor;
+            float i_min = Mathf.Max(epsilon, Mathf.Min(it.x, Mathf.Min(it.y, it.z)));
+            Vector3 r = anchor - rb.worldCenterOfMass;
+            float inv_obj = 1F / rb.mass + r.sqrMagnitude / i_min;
+
+            float reduced = 1F / (1F / this.mass + inv_obj);
+
+            float step = Mathf.Max(dt, Time.fixedDeltaTime);
+            k = Mathf.Min(k, 0.25F * reduced / (step * step));
+            c = Mathf.Min(c, 0.5F * reduced / step);
+        }
+
+
+        Vector3 spring = Vector3.ClampMagnitude(
+            (anchor - hand.position) * k,
+            this.max_arm_force);
+        Vector3 damp = -c * (this.velocity - anchor_vel);
+        Vector3 total = spring + damp;
+
+        if (grip.body != null)
+            grip.body.AddForceAtPosition(-total * this.object_force_scale * dt, anchor, ForceMode.Impulse);
+
+        return total;
     }
 
-    private Vector3 ForceGrip()
+    private void SetIgnoreHeld(Rigidbody rb, bool ignore)
     {
+        if (rb == null)
+            return;
+
+        foreach (Collider col in rb.GetComponentsInChildren<Collider>())
+            Physics.IgnoreCollision(this.controller, col, ignore);
+    }
+
+    private void ReleaseGrip(Grip grip, Grip other)
+    {
+        Rigidbody rb = grip.body;
+        grip.active = false;
+        grip.body = null;
+        grip.on_body = false;
+
+        bool other_holds_it = other.active && other.body == rb;
+        if (rb != null && !other_holds_it)
+            this.SetIgnoreHeld(rb, false);
+    }
+
+    private Vector3 ForceGrip(float dt)
+    {
+        bool l = this.left_grip.active  && this.left_hand  != null;
+        bool r = this.right_grip.active && this.right_hand != null;
+        if (!l && !r)
+            return Vector3.zero;
+
+        float damping = this.grip_damping / ((l ? 1 : 0) + (r ? 1 : 0));
+
         Vector3 force = Vector3.zero;
-
-        if (!this.is_left_gripping && !this.is_right_gripping)
-            return force;
-
-        if (this.is_left_gripping && this.left_hand != null)
-            force += this.ArmForce(this.left_hand, this.left_grip_point);
-
-        if (this.is_right_gripping && this.right_hand != null)
-            force += this.ArmForce(this.right_hand, this.right_grip_point);
-
-        // Without this the spring just oscillates forever which is...
-        // needless to say..... undesirable.  If a little funny
-        force -= this.grip_damping * this.velocity;
-
+        if (l)
+            force += this.ArmForce(this.left_hand, this.left_grip, damping, dt);
+        if (r)
+            force += this.ArmForce(this.right_hand, this.right_grip, damping, dt);
+        
         return force;
     }
 
@@ -409,7 +486,7 @@ public class HandLock : MonoBehaviour
         Vector3 force = this.mass * this.gravity;
 
         force += this.ForceDrag();
-        force += this.ForceGrip();
+        force += this.ForceGrip(dt);
         force += this.ForceFriction(dt);
 
         // Second law of motion; F = ma  (semi-implicit Euler)
@@ -433,9 +510,9 @@ public class HandLock : MonoBehaviour
 
         this.PushOut(this.head, this.head_radius);
 
-        if (!this.is_left_gripping)
+        if (!this.left_grip.active)
             this.PushOut(this.left_hand, this.hand_radius);
-        if (!this.is_right_gripping)
+        if (!this.right_grip.active)
             this.PushOut(this.right_hand, this.hand_radius);
     }
 
@@ -465,8 +542,8 @@ public class HandLock : MonoBehaviour
     void LateUpdate()
     {
         this.PlaceVisualHand(this.left_hand_visual, this.left_hand,
-                            this.is_left_gripping, this.left_grip_point);
+                            this.left_grip.active, this.left_grip.Anchor);
         this.PlaceVisualHand(this.right_hand_visual, this.right_hand,
-                            this.is_right_gripping, this.right_grip_point);
+                            this.right_grip.active, this.right_grip.Anchor);
     }
 }
