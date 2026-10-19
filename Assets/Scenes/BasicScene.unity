@@ -8711,6 +8711,10 @@ PrefabInstance:
       propertyPath: 'layer_sounds.Array.data[0].clips.Array.data[0]'
       value: 
       objectReference: {fileID: 8300000, guid: 27d8fb560a3a1d065837506a27044441, type: 3}
+    - target: {fileID: 5781604126591553699, guid: c6e48e67f7b647dbca4945de1a7f5fdf, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1712b28ed88bc9b9d87d37419bd30501, type: 2}
     - target: {fileID: 8488027013120388335, guid: c6e48e67f7b647dbca4945de1a7f5fdf, type: 3}
       propertyPath: m_Name
       value: Player
