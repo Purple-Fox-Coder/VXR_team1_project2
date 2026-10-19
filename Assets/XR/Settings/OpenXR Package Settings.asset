@@ -1262,28 +1262,6 @@ MonoBehaviour:
   targetOpenXRApiVersion: 
   required: 0
   customRuntimeLoaderName: 
---- !u!114 &-791339968974677003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c36843bac48b29469f79baf3c98f9b6, type: 3}
-  m_Name: AndroidXRHandMeshData Standalone
-  m_EditorClassIdentifier: Unity.XR.AndroidOpenXR::UnityEngine.XR.OpenXR.Features.Android.AndroidXRHandMeshData
-  m_enabled: 0
-  nameUi: 'Android XR: Hand Mesh Data'
-  version: 0.1.0
-  featureIdInternal: com.unity.openxr.feature.androidxr-hand-mesh-data
-  openxrExtensionStrings: XR_ANDROID_hand_mesh
-  company: Unity Technologies
-  priority: 0
-  targetOpenXRApiVersion: 
-  required: 0
-  customRuntimeLoaderName: 
 --- !u!114 &-772241337897321928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1798,8 +1776,9 @@ MonoBehaviour:
   features:
   - {fileID: -9026120010987070970}
   - {fileID: -5286938104943183653}
-  - {fileID: 3819635078746390991}
-  - {fileID: 6958074169081574282}
+  - {fileID: -6688126902170127185}
+  - {fileID: -4066696388450021151}
+  - {fileID: -3462119194230263325}
   - {fileID: -8872603408003209181}
   - {fileID: 2052705021005402972}
   - {fileID: -2589752044492245427}
@@ -1809,7 +1788,6 @@ MonoBehaviour:
   - {fileID: 2167262915527779096}
   - {fileID: 1918576487664664729}
   - {fileID: 2488916677033185255}
-  - {fileID: -791339968974677003}
   - {fileID: -3259809505167436137}
   - {fileID: 2350999956077220358}
   - {fileID: -7650007919772667157}
@@ -2080,28 +2058,6 @@ MonoBehaviour:
   featureIdInternal: com.unity.openxr.feature.input.androidmouse
   openxrExtensionStrings: XR_ANDROID_mouse_interaction
   company: Unity
-  priority: 0
-  targetOpenXRApiVersion: 
-  required: 0
-  customRuntimeLoaderName: 
---- !u!114 &3819635078746390991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12d3bf61b014a48a2b7564c61da9d7ad, type: 3}
-  m_Name: AndroidXRPerformanceMetrics Standalone
-  m_EditorClassIdentifier: Unity.XR.AndroidOpenXR::UnityEngine.XR.OpenXR.Features.Android.AndroidXRPerformanceMetrics
-  m_enabled: 0
-  nameUi: Android XR Performance Metrics
-  version: 0.1.0
-  featureIdInternal: com.unity.openxr.feature.androidxr-performance-metrics
-  openxrExtensionStrings: XR_ANDROID_performance_metrics
-  company: Unity Technologies
   priority: 0
   targetOpenXRApiVersion: 
   required: 0
@@ -2483,32 +2439,6 @@ MonoBehaviour:
   targetOpenXRApiVersion: 
   required: 0
   customRuntimeLoaderName: 
---- !u!114 &6958074169081574282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90ae1e8c3c7a542bba339faf2e771c5a, type: 3}
-  m_Name: AndroidXRSupportFeature Standalone
-  m_EditorClassIdentifier: Unity.XR.AndroidOpenXR::UnityEngine.XR.OpenXR.Features.Android.AndroidXRSupportFeature
-  m_enabled: 0
-  nameUi: Android XR Support
-  version: 1.0.0
-  featureIdInternal: com.unity.openxr.feature.androidxr-support
-  openxrExtensionStrings: 
-  company: Unity Technologies
-  priority: 0
-  targetOpenXRApiVersion: 
-  required: 0
-  customRuntimeLoaderName: 
-  optionalFeatures: []
-  symmetricProjection: 0
-  optimizeBufferDiscards: 1
-  multiviewRenderRegionsOptimizationMode: 0
 --- !u!114 &7051288912275315564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2618,7 +2548,7 @@ MonoBehaviour:
   - {fileID: -6374187115467057776}
   - {fileID: 3378408812644077240}
   - {fileID: -3462119194230263325}
-  - {fileID: 6769864235490670653}
+  - {fileID: -4066696388450021151}
   - {fileID: -5029033553346045952}
   - {fileID: 1561917072964417304}
   - {fileID: -7809239260665534199}
@@ -2629,7 +2559,7 @@ MonoBehaviour:
   - {fileID: -4176255006253957161}
   - {fileID: -6874310500654384384}
   - {fileID: 4043543865250365649}
-  - {fileID: 959069162022438180}
+  - {fileID: -6688126902170127185}
   - {fileID: 4077610584332541290}
   - {fileID: 2238270921792513637}
   - {fileID: -3908617402581598694}
